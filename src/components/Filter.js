@@ -31,6 +31,7 @@ class Filter extends React.Component {
             })}
             <button
               className="dropdown-item"
+              style={{cursor: "pointer"}}
               onClick={() => this.props.updateFilter(null)}
             >
               Reset filter
