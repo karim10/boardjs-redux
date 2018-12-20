@@ -5,9 +5,9 @@ class Column extends React.Component {
     e.preventDefault();
   }
 
-  onDrop(e, title) {
-    const id = e.dataTransfer.getData("id");
-    this.props.updateCards(parseInt(id, 10), title);
+  onDrop(e, columnId) {
+    const cardId = e.dataTransfer.getData("id");
+    this.props.updateCards(parseInt(cardId, 10), columnId);
   }
 
   render() {
@@ -16,10 +16,10 @@ class Column extends React.Component {
         style={columnStyles}
         onDragOver={e => this.onDragOver(e)}
         onDrop={e => {
-          this.onDrop(e, this.props.title);
+          this.onDrop(e, this.props.column.id);
         }}
       >
-        <div>{this.props.title}</div>
+        <div>{this.props.column.name}</div>
         {this.props.cards.map((card, index) => {
           return <Card key={index} {...card} getUser={this.props.getUser} />;
         })}

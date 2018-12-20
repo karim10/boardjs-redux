@@ -1,32 +1,32 @@
 export const initialState = {
   users: [
     {
+      id: 1,
+      first_name: "George",
+      last_name: "Bluth",
       avatar:
         "https://s3.amazonaws.com/uifaces/faces/twitter/calebogden/128.jpg",
-      first_name: "George",
-      id: 1,
-      last_name: "Bluth"
     },
     {
+      id: 2,
+      first_name: "Janet",
+      last_name: "Weaver",
       avatar:
         "https://s3.amazonaws.com/uifaces/faces/twitter/josephstein/128.jpg",
-      first_name: "Janet",
-      id: 2,
-      last_name: "Weaver"
     },
     {
+      id: 3,
+      first_name: "Emma",
+      last_name: "Wong",
       avatar:
         "https://s3.amazonaws.com/uifaces/faces/twitter/olegpogodaev/128.jpg",
-      first_name: "Emma",
-      id: 3,
-      last_name: "Wong"
     },
     {
+      id: 4,
+      first_name: "Eve",
+      last_name: "Holt",
       avatar:
         "https://s3.amazonaws.com/uifaces/faces/twitter/marcoramires/128.jpg",
-      first_name: "Eve",
-      id: 4,
-      last_name: "Holt"
     },
     {
       id: 5,
@@ -42,78 +42,152 @@ export const initialState = {
       avatar: "https://s3.amazonaws.com/uifaces/faces/twitter/bigmancho/128.jpg"
     }
   ],
-  cards: [
+  columns: [
     {
       id: 1,
-      title: "card 1",
-      state: "completed",
-      userId: 1
+      name: "To Do"
     },
     {
       id: 2,
-      title: "card 2",
-      state: "completed",
-      userId: 1
+      name: "In Progress"
     },
     {
       id: 3,
-      title: "card 3",
-      state: "uncompleted",
-      userId: 1
+      name: "In Review"
     },
     {
       id: 4,
-      title: "card 4",
-      state: "completed",
-      userId: 2
+      name: "Done"
+    }
+  ],
+  cards: [
+    {
+      id: 1,
+      title: "Task 1",
+      state: 1,
+      userId: 1,
+      description: "Edit readme file"
+    },
+    {
+      id: 2,
+      title: "Task 2",
+      state: 2,
+      userId: 1,
+      description: "Install and configure Prettier"
+    },
+    {
+      id: 3,
+      title: "Task 3",
+      state: 3,
+      userId: 1,
+      description: "Install and configure Typescript"
+    },
+    {
+      id: 4,
+      title: "Task 4",
+      state: 4,
+      userId: 2,
+      description: "Add redux"
     },
     {
       id: 5,
-      title: "card 5",
-      state: "completed",
-      userId: 3
+      title: "Task 5",
+      state: 3,
+      userId: 3,
+      description: "Refactor the login page"
     },
     {
       id: 6,
-      title: "card 6",
-      state: "uncompleted",
-      userId: 2
+      title: "Task 6",
+      state: 3,
+      userId: 2,
+      description: "Update db schema"
     },
     {
       id: 7,
-      title: "card 7",
-      state: "completed",
-      userId: 2
+      title: "Task 7",
+      state: 4,
+      userId: 2,
+      description: "Add readme file"
     },
     {
       id: 8,
-      title: "card 8",
-      state: "completed",
-      userId: 3
+      title: "Task 8",
+      state: 4,
+      userId: 3,
+      description: "Add readme file"
     },
     {
       id: 9,
-      title: "card 9",
-      state: "uncompleted",
+      title: "Task 9",
+      state: 2,
       userId: 3
     },
     {
       id: 10,
-      title: "card 10",
-      state: "completed",
+      title: "Task 10",
+      state: 2,
       userId: 2
     },
     {
       id: 11,
-      title: "card 11",
-      state: "completed",
+      title: "Task 11",
+      state: 1,
       userId: 2
     },
     {
       id: 12,
-      title: "card 12",
-      state: "uncompleted",
+      title: "Task 12",
+      state: 1,
       userId: 1
+    },
+    {
+      id: 13,
+      title: "Task 13",
+      state: 1,
+      userId: 5
+    },
+    {
+      id: 14,
+      title: "Task 14",
+      state: 1,
+      userId: 5
+    },
+    {
+      id: 15,
+      title: "Task 15",
+      state: 1,
+      userId: 4
+    },
+    {
+      id: 16,
+      title: "Task 16",
+      state: 2,
+      userId: 4
+    },
+    {
+      id: 17,
+      title: "Task 17",
+      state: 1,
+      userId: 5
+    },
+    {
+      id: 18,
+      title: "Task 18",
+      state: 1,
+      userId: 5
+    },
+    {
+      id: 19,
+      title: "Task 19",
+      state: 2,
+      userId: 4
+    },
+    {
+      id: 20,
+      title: "Task 20",
+      state: 2,
+      userId: 5
     }
   ],
   filter: null

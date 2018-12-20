@@ -13,11 +13,11 @@ class Board extends React.Component {
     return this.state.cards.find(card => card.id === id);
   }
 
-  updateCards(cardId, columnTitle) {
+  updateCards(cardId, columnId) {
     const card = this.getCard(cardId);
     const cardIndex = this.state.cards.findIndex(c => c.id === cardId);
     let newCards = this.state.cards;
-    newCards.splice(cardIndex, 1, { ...card, state: columnTitle });
+    newCards.splice(cardIndex, 1, { ...card, state: columnId });
     this.setState({
       cards: newCards
     });
@@ -33,27 +33,19 @@ class Board extends React.Component {
     return this.state.users.find(user => user.id === userId);
   }
 
-  render() {
-    let cardsComplete = [];
-    let cardsUncomplete = [];
+  getCardsByColumn(column) {
     if (this.state.filter !== null) {
-      cardsComplete = this.state.cards.filter(card => {
-        return card.state === "completed" && card.userId === this.state.filter;
-      });
-      cardsUncomplete = this.state.cards.filter(card => {
-        return (
-          card.state === "uncompleted" && card.userId === this.state.filter
-        );
+      return this.state.cards.filter(card => {
+        return card.state === column.id && card.userId === this.state.filter;
       });
     } else {
-      cardsComplete = this.state.cards.filter(card => {
-        return card.state === "completed";
-      });
-      cardsUncomplete = this.state.cards.filter(card => {
-        return card.state === "uncompleted";
+      return this.state.cards.filter(card => {
+        return card.state === column.id;
       });
     }
+  }
 
+  render() {
     return (
       <div>
         <Filter
@@ -61,18 +53,17 @@ class Board extends React.Component {
           updateFilter={this.updateFilter.bind(this)}
         />
         <div style={boardStyles}>
-          <Column
-            title="completed"
-            cards={cardsComplete}
-            updateCards={this.updateCards.bind(this)}
-            getUser={this.getUser.bind(this)}
-          />
-          <Column
-            title="uncompleted"
-            cards={cardsUncomplete}
-            updateCards={this.updateCards.bind(this)}
-            getUser={this.getUser.bind(this)}
-          />
+          {
+            this.state.columns.map((column) => {
+              return <Column
+              key={column.id}
+              column={column}
+              cards={this.getCardsByColumn(column)}
+              updateCards={this.updateCards.bind(this)}
+              getUser={this.getUser.bind(this)}
+            /> 
+            })
+          }
         </div>
       </div>
     );

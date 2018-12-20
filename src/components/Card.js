@@ -13,7 +13,7 @@ class Card extends React.Component {
         })
     }
 
-    onDragEnd(e) {
+    onDragEnd() {
         this.setState({
             dragged: false
         })
@@ -26,11 +26,11 @@ class Card extends React.Component {
             <div
                 style={{ ...cardStyles, opacity: opacity }}
                 draggable
-                onDragEnd={e => this.onDragEnd(e)}
+                onDragEnd={() => this.onDragEnd()}
                 onDragStart={e => this.onDragStart(e, this.props.id)}
             >
                 <div style={titleStyles}>{this.props.title}</div>
-                <div style={descStyles}>Description:</div>
+                <div style={descStyles}>{this.props.description}</div>
                 <img alt="" style={avatarStyles} src={user.avatar} />
             </div>
         );
@@ -39,7 +39,8 @@ class Card extends React.Component {
 
 const descStyles = {
     textAlign: "left",
-    paddingLeft: "10px"
+    paddingLeft: "10px",
+    width: "200px"
 };
 
 const cardStyles = {
