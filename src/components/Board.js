@@ -1,12 +1,15 @@
 import React from "react";
 import Column from "./Column";
-import { initialState } from "../helpers/constants";
 import Filter from "../components/Filter";
 
 class Board extends React.Component {
   constructor(props) {
     super(props);
-    this.state = initialState;
+    this.state = {
+      users: [],
+      columns: [],
+      cards: []
+    };
   }
 
   getCard(id) {
@@ -45,6 +48,14 @@ class Board extends React.Component {
     }
   }
 
+  componentDidMount() {
+    fetch("https://api.myjson.com/bins/l2yvo")
+      .then(response => response.json())
+      .then(data => {
+        this.setState(data);
+      });
+  }
+
   render() {
     return (
       <div>
@@ -53,17 +64,17 @@ class Board extends React.Component {
           updateFilter={this.updateFilter.bind(this)}
         />
         <div style={boardStyles}>
-          {
-            this.state.columns.map((column) => {
-              return <Column
-              key={column.id}
-              column={column}
-              cards={this.getCardsByColumn(column)}
-              updateCards={this.updateCards.bind(this)}
-              getUser={this.getUser.bind(this)}
-            /> 
-            })
-          }
+          {this.state.columns.map(column => {
+            return (
+              <Column
+                key={column.id}
+                column={column}
+                cards={this.getCardsByColumn(column)}
+                updateCards={this.updateCards.bind(this)}
+                getUser={this.getUser.bind(this)}
+              />
+            );
+          })}
         </div>
       </div>
     );
@@ -74,15 +85,8 @@ const boardStyles = {
   borderStyle: "solid",
   borderWidth: "5px",
   borderColor: "green",
-  width: window.innerWidth - 100 + "px",
-  height: window.innerHeight - 100 + "px",
-  position: "absolute",
-  left: "0",
-  right: "0",
-  bottom: "0",
-  top: "0",
-  margin: "auto",
-  display: "flex"
+  display: "inline-block",
+  height: window.innerHeight - 100 + "px"
 };
 
 export default Board;

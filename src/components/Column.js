@@ -1,5 +1,6 @@
 import React from "react";
 import Card from "./Card";
+
 class Column extends React.Component {
   onDragOver(e) {
     e.preventDefault();
@@ -19,7 +20,7 @@ class Column extends React.Component {
           this.onDrop(e, this.props.column.id);
         }}
       >
-        <div>{this.props.column.name}</div>
+        <div style={columnTitleStyle}>{this.props.column.name}</div>
         {this.props.cards.map((card, index) => {
           return <Card key={index} {...card} getUser={this.props.getUser} />;
         })}
@@ -30,10 +31,17 @@ class Column extends React.Component {
 
 var columnStyles = {
   borderStyle: "solid",
-  borderWidth: "3px",
+  borderWidth: "2px",
   borderColor: "#5890A3",
   overflowY: "scroll",
-  width: "340px"
+  width: "340px",
+  float: "left",
+  height: "100%"
+};
+
+var columnTitleStyle = {
+  paddingTop: "10px",
+  textDecoration: "underline"
 };
 
 export default Column;
