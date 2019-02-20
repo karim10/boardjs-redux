@@ -1,6 +1,5 @@
 import React from "react";
 import Column from "./Column";
-import Filter from "../components/Filter";
 
 class Board extends React.Component {
   constructor(props) {
@@ -23,12 +22,6 @@ class Board extends React.Component {
     newCards.splice(cardIndex, 1, { ...card, state: columnId });
     this.setState({
       cards: newCards
-    });
-  }
-
-  updateFilter(userId) {
-    this.setState({
-      filter: userId
     });
   }
 
@@ -59,10 +52,6 @@ class Board extends React.Component {
   render() {
     return (
       <div>
-        <Filter
-          users={this.state.users}
-          updateFilter={this.updateFilter.bind(this)}
-        />
         <div style={boardStyles}>
           {this.state.columns.map(column => {
             return (
