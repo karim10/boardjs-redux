@@ -11,11 +11,19 @@ class Board extends React.Component {
     };
   }
 
-  getCard(id) {
+  getCard = id => {
     return this.state.cards.find(card => card.id === id);
-  }
+  };
 
-  updateCards(cardId, columnId) {
+  getUser = userId => {
+    return this.state.users.find(user => user.id === userId);
+  };
+
+  getCardsByColumn = column => {
+    return this.state.cards.filter(card => card.state === column.id);
+  };
+
+  updateCards = (cardId, columnId) => {
     const card = this.getCard(cardId);
     const cardIndex = this.state.cards.findIndex(c => c.id === cardId);
     let newCards = this.state.cards;
@@ -23,23 +31,7 @@ class Board extends React.Component {
     this.setState({
       cards: newCards
     });
-  }
-
-  getUser(userId) {
-    return this.state.users.find(user => user.id === userId);
-  }
-
-  getCardsByColumn(column) {
-    if (this.state.filter !== null) {
-      return this.state.cards.filter(card => {
-        return card.state === column.id && card.userId === this.state.filter;
-      });
-    } else {
-      return this.state.cards.filter(card => {
-        return card.state === column.id;
-      });
-    }
-  }
+  };
 
   componentDidMount() {
     fetch("https://api.myjson.com/bins/l2yvo")
@@ -59,8 +51,8 @@ class Board extends React.Component {
                 key={column.id}
                 column={column}
                 cards={this.getCardsByColumn(column)}
-                updateCards={this.updateCards.bind(this)}
-                getUser={this.getUser.bind(this)}
+                updateCards={this.updateCards}
+                getUser={this.getUser}
               />
             );
           })}
