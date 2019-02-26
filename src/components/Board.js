@@ -34,7 +34,7 @@ class Board extends React.Component {
   };
 
   componentDidMount() {
-    fetch("https://api.myjson.com/bins/l2yvo")
+    fetch("https://api.myjson.com/bins/131dke")
       .then(response => response.json())
       .then(data => {
         this.setState(data);
@@ -65,9 +65,10 @@ class Board extends React.Component {
 const boardStyles = {
   borderStyle: "solid",
   borderWidth: "5px",
-  borderColor: "green",
+  borderColor: "black",
   display: "inline-block",
-  height: window.innerHeight - 100 + "px"
+  height: window.innerHeight - 90 + "px",
+  marginTop: "10px"
 };
 
 export default Board;

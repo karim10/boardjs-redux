@@ -31,7 +31,7 @@ class Card extends React.Component {
       >
         <div style={titleStyles}>{this.props.title}</div>
         <div style={descStyles}>{this.props.description}</div>
-        <img alt="" style={avatarStyles} src={user.avatar} />
+        <img alt="" style={avatarStyles} src={user.avatar} title={user.first_name}/>
       </div>
     );
   }
@@ -58,7 +58,8 @@ const cardStyles = {
 const titleStyles = {
   textAlign: "left",
   paddingLeft: "10px",
-  paddingTop: "10px"
+  paddingTop: "20px",
+  fontWeight: "bold"
 };
 
 const avatarStyles = {

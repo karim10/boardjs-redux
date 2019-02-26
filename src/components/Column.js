@@ -19,6 +19,7 @@ class Column extends React.Component {
         onDrop={e => {
           this.onDrop(e, this.props.column.id);
         }}
+        className="scrollBar"
       >
         <div style={columnTitleStyle}>{this.props.column.name}</div>
         {this.props.cards.map((card, index) => {
@@ -30,9 +31,6 @@ class Column extends React.Component {
 }
 
 var columnStyles = {
-  borderStyle: "solid",
-  borderWidth: "2px",
-  borderColor: "#5890A3",
   overflowY: "scroll",
   width: "340px",
   float: "left",
