@@ -9,6 +9,7 @@ class Column extends React.Component {
   onDrop(e, columnId) {
     const cardId = e.dataTransfer.getData("id");
     this.props.updateCards(parseInt(cardId, 10), columnId);
+    this.props.updateRemoteState();
   }
 
   render() {
